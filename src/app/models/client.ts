@@ -5,5 +5,6 @@ firstname?:string,
 lastname?:string,
 email?:string,
 phone?:number,
-balance?:number
+balance?:number,
+useId?:string
 }

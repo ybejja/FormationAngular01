@@ -12,7 +12,7 @@
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">List de client</h4>
-
+        <input #query (keyup)=search(query.value) type="text" class="form-control" placeholder="serach ...">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -23,7 +23,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let client of clients" (dblclick)="deleteClient(client.id)">
+                    <tr *ngFor="let client of results" (dblclick)="deleteClient(client.id)">
                         <td scope="row">{{client.firstname}}  {{client.lastname}}</td>
                         <td>{{client.phone}}</td>
                         <td>{{client.balance | currency : 'USD' : 'symbol'}}</td>
