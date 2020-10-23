@@ -20,6 +20,7 @@ export class EditClientComponent implements OnInit {
     balance: null
   }
 
+  id:string;
   constructor(
     private clientService:ClientService,
     private route:ActivatedRoute,
@@ -27,15 +28,17 @@ export class EditClientComponent implements OnInit {
     private flashMessages:FlashMessagesService) { }
 
   ngOnInit(): void {
-
-    this.clientService.GetClient(this.route.snapshot.params['id']).subscribe(client => {
+    this.id =this.route.snapshot.params['id'];
+    this.clientService.GetClient(this.id).subscribe(client => {
       this.client = client;
+      this.client.id =this.id;
     });
   }
 
   onSubmit(){
-    this.clientService.UpdateClient(this.client)
-    this.flashMessages.show("Client updated", {cssClass:'alert alert-warning', timeout:5000})
+    console.log(this.client)
+    this.clientService.UpdateClient(this.client);
+    this.flashMessages.show("Client updated", {cssClass:'alert alert-warning', timeout:5000});
     this.routeNavigate.navigate(['/']);
   }
 

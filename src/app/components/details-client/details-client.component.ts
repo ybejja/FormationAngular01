@@ -33,14 +33,13 @@ export class DetailsClientComponent implements OnInit {
     this.seviceClient.GetClient(this.id).subscribe(client => {
       console.log(client)
       this.client = client;
+      this.client.id =this.id;
     })
 
 
   }
   
   onSubmit(){
-    
-    //this.client.id =this.id;
     this.seviceClient.UpdateClient(this.client);
     this.flashMessages.show("Balance updated", {cssClass:'alert alert-warning',timeout:5000})
   }
